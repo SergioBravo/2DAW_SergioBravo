@@ -1,0 +1,30 @@
+body {
+	background-color:blue;
+	color:white;
+	font-family:calibri;
+	font-size:12pt;
+	line-height:1.75em;
+	margin:30px;
+}
+fieldset {
+	width:300px;
+	float:left;
+	position:relative;
+	top:60px;
+}
+
+input[type="text"]   {
+	position:absolute;
+	left:35%;
+}
+img {
+	width:400px;
+	height:300px;
+	border:1px solid yellow;
+	position:relative;
+	left:40px;
+}
+.par {
+	position:absolute;
+	left:150px;
+}

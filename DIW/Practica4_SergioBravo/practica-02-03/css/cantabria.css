@@ -1,0 +1,60 @@
+h3[title] {
+  font-family: Arial;
+  color: #948B0E;
+}
+
+[class="historia"] {
+  font-family: Century;
+  color: #CBE68D;
+  font-size: 9pt;
+}
+
+[class~="cantabra"] {
+  font-family: Corbel;
+  color: #54B3B6;
+  font-size: 10pt;
+}
+
+[title^="Cantabra"] {
+  font-family: Georgia;
+  color: #751A7C;
+  font-size: 11pt;
+}
+
+[title$="loco"] {
+  font-family: Latha;
+  color: #273CDD;
+  font-size: 12pt;
+}
+
+[title*="conquista"] {
+  font-family: Calibri;
+  color: #910D1F;
+  font-size: 8pt;
+}
+
+.reconquista::first-letter {
+  font-size: 3em;
+  color: #CDB3DD;
+}
+
+.cantabria::first-line {
+  color: #D5D21B;
+  text-transform: capitalize;
+}
+
+@media (min-width:450px)  {
+  [class="historia"] {font-size:10pt;}
+  [class~="cantabra"] {font-size:11pt;}
+  [title^="Cantabra"] {font-size:12pt;}
+  [title$="loco"] {font-size:12pt;}
+  [title*="conquista"] {font-size:10pt;}
+}
+
+@media (min-width:900px)  {
+  [class="historia"] {font-size:11pt;}
+  [class~="cantabra"] {font-size:12pt;}
+  [title^="Cantabra"] {font-size:13pt;}
+  [title$="loco"] {font-size:13pt;}
+  [title*="conquista"] {font-size:12pt;}
+}

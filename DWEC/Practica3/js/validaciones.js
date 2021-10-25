@@ -1,49 +1,10 @@
-window.onload = inicio;
-
-function inicio() {
-
-  document.formulario.comprobar.onclick = validaciones;
-
-}
-//----------MOSTRAMOS LOS RESULTADOS---------------------
-function validaciones() {
-  comprobarCadena();
-  mostrarCuenta();
-  mostrarIban();
-}
-
-function comprobarCadena() {
-  let cadena = document.formulario.cadena.value;
-  if (NifCif(cadena) == "C1")document.formulario.mensaje.value = "Cif Correcto";
-  else if (NifCif(cadena) == "C2")document.formulario.mensaje.value = "Cif caracter control mal";
-  else if (NifCif(cadena) == "N1")document.formulario.mensaje.value = "NIF Correcto";
-  else if (NifCif(cadena) == "N2")document.formulario.mensaje.value = "NIf caracter control mal";
-  else if (NifCif(cadena) == "N3")document.formulario.mensaje.value = "Se ha metido un dni";
-  else document.formulario.mensaje.value = "Valor erroneo";
-}
-
-function mostrarCuenta() {
-  let cBanco = document.formulario.cbanco.value+'',cSucursal = document.formulario.csucursal.value+'',nCuenta = document.formulario.ncuenta.value+'';
-  let cCuenta = cBanco+" "+cSucursal+" "+codigosControl(cBanco,cSucursal,nCuenta)+" "+nCuenta;
-
-  document.formulario.ccuenta.value = cCuenta;
-  document.formulario.ibanEs.value = calculoIBANEspanya(cCuenta);
-}
-
-function mostrarIban() {
-  let iban = document.formulario.iban.value;
-
-  if (comprobarIBAN(iban)) document.formulario.iban.value = "El IBAN es correcto";
-  else document.formulario.iban.value = "El IBAN es incorrecto";
-}
-//-----------COMPROBACIONES--------------------------------------------
 function NifCif(cadena) {
   if (esCif(cadena) == 1)return "C1";//CifCorrecto
   else if (esCif(cadena) == 2)return "C2";//CifMalCaracterControl
   else if (esNif(cadena) == 1)return "N1";//NifCorrecto
   else if (esNif(cadena) == 2)return "N2";//NifMalCaracterControl
   else if (esNif(cadena) == 3)return "N3";//NifDni
-  else return 0;//CadenaNoNifCif
+  else return "0";//CadenaNoNifCif
 }
 
 function esNif(nif) {
@@ -116,13 +77,7 @@ function esNif(nif) {
 
   }//fin escif
 
-  function codigosControl(cBanco,cSucursal,nCuenta) {
-    if (cBanco.length != 4 || cSucursal.length != 4 || nCuenta.length != 10) return 0;//Números incorrectos
-    else return codigoCuenta(cBanco,cSucursal,nCuenta);
-
-
-//------------FUNCION AUXILIAR PARA CALCULAR EL CODIGO DE CONTROL DE LA CUENTA-----------------------------------
-function codigoCuenta(cBanco,cSucursal,nCuenta) {
+function codigosControl(cBanco,cSucursal,nCuenta) {
   let suma1=0,suma2=0,primerdigito=0,segundodigito=0,codigocontrol='';
   //OBTENEMOS LA PRIMERA SUMA CON EL CODIGO DEL BANCO MULTIPLICANDO SUS CIFRAS 1*4 2*8 3*5 4*10
   suma1=(parseInt(cBanco[0])*4)+(parseInt(cBanco[1])*8)+(parseInt(cBanco[2])*5)+(parseInt(cBanco[3])*10);
@@ -131,21 +86,20 @@ function codigoCuenta(cBanco,cSucursal,nCuenta) {
   //SACAMOS EL RESTO LA SUMA DE LAS SUMAS ENTRE 11
   primerdigito=parseInt((suma1+suma2)%11);
   primerdigito=(11-primerdigito)+'';
-  if (primerdigito == 10) primerdigito=1+'';
-  if (primerdigito == 11) primerdigito=0+'';
+  if (primerdigito == "10") primerdigito="1";
+  if (primerdigito == "11") primerdigito="0";
   //OBTENEMOS LA TERCERA SUMA CON EL NÚMERO DE CUENTA MULTIPLICADO POR 1*1 2*2 3*4 4*8 5*5 6*10 7*9 8*7 9*3 10*6
   suma3 = (parseInt(nCuenta[0])*1)+(parseInt(nCuenta[1])*2)+(parseInt(nCuenta[2])*4)+(parseInt(nCuenta[3])*8)+(parseInt(nCuenta[4])*5)+
           (parseInt(nCuenta[5])*10)+(parseInt(nCuenta[6])*9)+(parseInt(nCuenta[7])*7)+(parseInt(nCuenta[8])*3)+(parseInt(nCuenta[9])*6);
   //SACAMOS EL RESTO DE LA SUMA ENTRE 11
   segundodigito=parseInt(suma3%11);
   segundodigito=(11-segundodigito)+'';
-  if (segundodigito == 10) segundodigito=1+'';
-  if (segundodigito == 11) segundodigito=0+'';
+  if (segundodigito == "10") segundodigito="1";
+  if (segundodigito == "11") segundodigito="0";
 
   codigocontrol=primerdigito+segundodigito
   return codigocontrol;
-}//fincodigocuenta
-}//fin Codigoscontrol
+}//fincodigosControl
 
 function calculoIBANEspanya(cCuenta) {
   let iban = cCuenta.replace(/ /g, "")+"142800";
@@ -159,22 +113,25 @@ function calculoIBANEspanya(cCuenta) {
   else return "ES "+codigocontrol+" "+cCuenta;//Devolvemos el IBAN
 }
 
-function comprobarIBAN(cadena) {
-  let iban = cadena.toLowerCase().replace(/ /g, "");
-  iban = iban.trim();//Quitamos los blancos del principio y el final de la cadena
-
-  if (iban.length > 34 || iban.length < 15) {return false}//Si no tiene el tamaño de un iban es falso
-  else {
+function comprobarIBAN(iban) {
     let cuatroCaracteres = iban.substr(0,4);//Guardamos los 4 primeros caracteres
     let ibanAux = iban.substr(4,(iban.length - 4));//Quitamos los 4 primeros caracteres de la cadena
     let letras = "abcdefghijklmnopqrstuvwxz";
-    let resto = 0;//Para almacenar el resto de la division del iban entre 97
 
     ibanAux += cuatroCaracteres;
 
     for (let i = 0; i < ibanAux.length; i++) {//Cambiamos las letras por su correspondiente valor
-      if (letras.indexOf(ibanAux[i]) != -1) ibanAux.replaceAll(ibanAux[i],10+letras.indexOf(ibanAux[i]));
+      if (letras.indexOf(ibanAux[i]) != -1) ibanAux = ibanAux.replaceAll(ibanAux[i],10+letras.indexOf(ibanAux[i]));
     }
-    console.log(ibanAux);
-  }//finelse
+
+    let inicial = 0;//Para controlar la posicion inical
+    let final = 7;//Para controlar la posicion final
+    let resto = "";
+    while (inicial < ibanAux.length) {//Vamos a ir sacando números del ibanAux de 9 en 9 para poder operar con ellos
+      resto += ibanAux.substring(inicial,final);
+      resto = parseInt(resto)%97;
+      inicial += 7;final += 7;
+    }
+    if (resto == 1)return true;
+    else return false;
 }//finfuncion

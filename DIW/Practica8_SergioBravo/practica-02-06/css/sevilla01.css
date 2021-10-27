@@ -1,0 +1,32 @@
+div#historia>div#primero,div#historia>div#segundo,div#historia>div#tercero,div#historia>div#cuarto {
+  display: flex;
+  width: 100%;
+  height: 800px;
+  border: solid green;
+}
+div#historia>div#primero>div,div#historia>div#segundo>div,div#historia>div#tercero>div,div#historia>div#cuarto>div {
+  width: 30%;
+  height: 600px;
+  border: solid yellow;
+}
+
+div#primero {
+  align-items: flex-start;
+  flex-direction: row;
+}
+div#primero>div:nth-child(3) {flex-grow: 1;}
+
+div#segundo {
+  align-items: center;
+  flex-direction: row-reverse;
+}
+div#segundo>div:first-child {flex-grow: 1;}
+
+div#tercero {align-items: flex-end;}
+div#tercero>div:first-child {order: 2;}
+div#tercero>div:nth-child(2){order: 3;}
+div#tercero>div:nth-child(3){order: 1;}
+
+div#cuarto {align-items: baseline;}
+div#cuarto >div:first-child{flex-grow: 1;}
+div#cuarto >div:nth-child(2){flex-grow: 2;}

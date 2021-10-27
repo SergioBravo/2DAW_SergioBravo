@@ -7,12 +7,13 @@ function validarFormulario() {
   validarLocalidad();
   validarCodigoPostal();
   validarTelefono();
-  validarFecha();
+  //La fecha la validamos usando el tipo date dentro del input
   comprobarBotones();
+  comprobarComunidades();
   comprobarBanco();
   comprobarIban();
 
-  if (mensaje == "") {document.formulario.submit();}
+  if (mensaje == "") {document.formulario.submit();alert("Documento correcto");}
   else {alert(mensaje);}
   mensaje = "";
 }
@@ -25,10 +26,10 @@ function validarNombre() {
   for (let i = 1; i < nombre.length - 1; i++) {
     if ((nombre[i] < "a" || nombre[i] > "z")&&(nombre[i] < 0 || nombre[i] > 9)&&!cespeciales.inlcudes(nombre[i])) control = 1;
   }
-  
+
   if (nombre == "" ||(nombre[0] < "a" || nombre[0] > "z")||control==1||
      ((nombre[nombre.length - 1] < "a" || nombre[nombre.length - 1] > "z")
-     &&(nombre[nombre.length - 1] < 0 || nombre[nombre.length - 1] > 9)&&nombre[nombre.length - 1] != ".")){mensaje += "Formato de nombre incorrecto |";}
+     &&(nombre[nombre.length - 1] < 0 || nombre[nombre.length - 1] > 9)&&nombre[nombre.length - 1] != ".")){mensaje += "Formato de nombre incorrecto \n";}
 }
 
 function validarCodigoEmpresa() {
@@ -38,16 +39,16 @@ function validarCodigoEmpresa() {
   for (let i = 1; i < codigo.length; i++) {
     if ((codigo[i] < "a" || codigo[i] > "z")&&(codigo[i] < 0 || codigo[i] > 9)) control = 1;
   }
-  if (codigo.length < 5 || codigo.length > 10 || control == 1) {mensaje += "Formato de codigo de empresa incorrecto |";}
+  if (codigo.length < 5 || codigo.length > 10 || control == 1) {mensaje += "Formato de codigo de empresa incorrecto \n";}
 }
 
 function comprobarNif() {
   let cadena = document.formulario.nif.value.replace(/ /g, "");
   cadena.trim();
-  if (NifCif(cadena) == "C2")mensaje += "Cif caracter control mal |";
-  if (NifCif(cadena) == "N2")mensaje += "NIf caracter control mal |";
-  if (NifCif(cadena) == "N3")mensaje += "Se ha metido un dni |";
-  if (NifCif(cadena) == "0") mensaje += "Valor erroneo CIF/NIF |";
+  if (NifCif(cadena) == "C2")mensaje += "Cif caracter control mal \n";
+  if (NifCif(cadena) == "N2")mensaje += "NIf caracter control mal \n";
+  if (NifCif(cadena) == "N3")mensaje += "Se ha metido un dni \n";
+  if (NifCif(cadena) == "0") mensaje += "Valor erroneo CIF/NIF \n";
 }
 
 function validarDireccion() {
@@ -61,7 +62,7 @@ function validarDireccion() {
 
   if ((direccion[0] < "a" || direccion[0] > "z")||control==1||
      ((direccion[direccion.length - 1] < "a" || direccion[direccion.length - 1] > "z")
-     &&(direccion[direccion.length - 1] < 0 || direccion[direccion.length - 1] > 9))){mensaje += "Formato de dirección incorrecto |";}
+     &&(direccion[direccion.length - 1] < 0 || direccion[direccion.length - 1] > 9))){mensaje += "Formato de dirección incorrecto \n";}
 }
 
 function validarLocalidad() {
@@ -72,26 +73,21 @@ function validarLocalidad() {
     if ((localidad[i] < "a" || localidad[i] > "z")) control = 1;
   }
 
-  if ((localidad[0] < "a" || localidad[0] > "z") || (localidad[localidad.length - 1] < "a" || localidad[localidad.length - 1] > "z") || control == 1){mensaje += "Formato de localidad incorrecto |";}
+  if ((localidad[0] < "a" || localidad[0] > "z") || (localidad[localidad.length - 1] < "a" || localidad[localidad.length - 1] > "z") || control == 1){mensaje += "Formato de localidad incorrecto \n";}
 }
 
 function validarCodigoPostal() {
   let cp = document.formulario.cp.value.trim();
 
-  if (cp < 1000 || cp > 52999)mensaje += "Formato de codigo postal incorrecto |";
+  if (cp < 1000 || cp > 52999)mensaje += "Formato de codigo postal incorrecto \n";
 }
 
 function validarTelefono() {
   let telefono = document.formulario.telefono.value.trim();
 
-  if (telefono.length != 9 || (telefono[0] != 6 && telefono[0] != 9 && telefono[0] != 7)) mensaje += "Formato de telefono incorrecto |";
+  if (telefono.length != 9 || (telefono[0] != 6 && telefono[0] != 9 && telefono[0] != 7)) mensaje += "Formato de telefono incorrecto \n";
 }
 
-function validarFecha() {
-  let fecha = document.formulario.fempresa.value.trim();
-
-  if (fecha.indexOf("/") > 2 && fecha.lastIndexOf("/") > 5 && (fecha.length - fecha.lastIndexOf("/") < 2 || fecha.length - fecha.lastIndexOf("/") > 4)) mensaje += "Formato de fecha mal";
-}
 
 function comprobarBotones() {
   let con = 0;
@@ -100,7 +96,7 @@ function comprobarBotones() {
     if (document.formulario.elements[i].type == "checkbox" && document.formulario.elements[i].checked) con++;
   }
 
-  if (con < 1) mensaje += "No se ha seleccionado ninguna casilla de verificación";
+  if (con < 1) mensaje += "No se ha seleccionado ninguna casilla de verificación \n";
 
   con = 0;
 
@@ -108,8 +104,19 @@ function comprobarBotones() {
     if (document.formulario.elements[i].type == "radio" && document.formulario.elements[i].checked) con++;
   }
 
-  if (con < 1) mensaje += "No se ha seleccionado ningun botón |";
-  if (con > 2) mensaje += "Solo se puede seleccionar un botón por sección |";
+  if (con < 1) mensaje += "No se ha seleccionado ningun botón \n";
+  if (con > 2) mensaje += "Solo se puede seleccionar un botón por sección \n";
+}
+
+function comprobarComunidades() {
+  let comunidades = document.formulario.lista;
+  let con = 0;
+
+  for (let i = 0; i < comunidades.length; i++) {
+    if (comunidades[i].selected)con++;
+  }
+
+  if (con < 2)mensaje += "Número de comunidades mal \n";
 }
 
 function comprobarBanco() {
@@ -119,9 +126,9 @@ function comprobarBanco() {
 
   comprobar = "";
 
-  if (cBanco.length != 4)comprobar += "Tamaño del codigo del banco incorrecto |";
-  if (cSucursal.length != 4)comprobar += "Tamaño del codigo de oficina incorrecto |";
-  if (nCuenta.length != 10)comprobar += "Tamaño del codigo del numero de cuenta incorrecto |";
+  if (cBanco.length != 4)comprobar += "Tamaño del codigo del banco incorrecto \n";
+  if (cSucursal.length != 4)comprobar += "Tamaño del codigo de oficina incorrecto \n";
+  if (nCuenta.length != 10)comprobar += "Tamaño del codigo del numero de cuenta incorrecto \n";
 
   if (comprobar != "")mensaje += comprobar;
   else {
@@ -139,6 +146,6 @@ function comprobarIban() {
     if (isNaN(iban[i])) control = 1;
   }
 
-  if (iban[0] < "a" || iban[0] > "z"||iban[1] < "a" || iban[1] > "z" || control == 1 || iban.length > 34 || iban.length < 15) mensaje += "Formato del iban incorrecto";
-  else if (comprobarIBAN(iban) == false) mensaje += "Iban incorrecto";
+  if (iban[0] < "a" || iban[0] > "z"||iban[1] < "a" || iban[1] > "z" || control == 1 || iban.length > 34 || iban.length < 15) mensaje += "Formato del iban incorrecto \n";
+  else if (comprobarIBAN(iban) == false) mensaje += "Iban incorrecto \n";
 }

@@ -25,8 +25,8 @@ function validarNombre() {
   for (let i = 1; i < nombre.length - 1; i++) {
     if ((nombre[i] < "a" || nombre[i] > "z")&&(nombre[i] < 0 || nombre[i] > 9)&&!cespeciales.inlcudes(nombre[i])) control = 1;
   }
-  console.log();
-  if ((nombre[0] < "a" || nombre[0] > "z")||control==1||
+  
+  if (nombre == "" ||(nombre[0] < "a" || nombre[0] > "z")||control==1||
      ((nombre[nombre.length - 1] < "a" || nombre[nombre.length - 1] > "z")
      &&(nombre[nombre.length - 1] < 0 || nombre[nombre.length - 1] > 9)&&nombre[nombre.length - 1] != ".")){mensaje += "Formato de nombre incorrecto |";}
 }

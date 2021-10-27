@@ -1,10 +1,14 @@
 function NifCif(cadena) {
-  if (esCif(cadena) == 1)return "C1";//CifCorrecto
-  else if (esCif(cadena) == 2)return "C2";//CifMalCaracterControl
-  else if (esNif(cadena) == 1)return "N1";//NifCorrecto
-  else if (esNif(cadena) == 2)return "N2";//NifMalCaracterControl
-  else if (esNif(cadena) == 3)return "N3";//NifDni
-  else return "0";//CadenaNoNifCif
+  let codigo;
+
+  if (esCif(cadena) == 1)codigo = "C1";//CifCorrecto
+  else if (esCif(cadena) == 2)codigo = "C2";//CifMalCaracterControl
+  else if (esNif(cadena) == 1)codigo = "N1";//NifCorrecto
+  else if (esNif(cadena) == 2)codigo = "N2";//NifMalCaracterControl
+  else if (esNif(cadena) == 3)codigo = "N3";//NifDni
+  else codigo = "0";//CadenaNoNifCif
+
+  return codigo;
 }
 
 function esNif(nif) {
@@ -13,6 +17,7 @@ function esNif(nif) {
   let caracteresIniciales = "XYZLKM";
   let numeros = 0;
   let caracterControl = "";
+  let codigo;
 
   if (nifM.length == 9) {
     //Calculamos el caracter de control
@@ -31,24 +36,29 @@ function esNif(nif) {
   }
 
   //Comprobamos la validez del nif
-  if (!isNaN(nif[0]) && caracterControl == nifM[nifM.length - 1]) return 1;
-  else if ((nif[0] == "Y" || nif[0] == "Z") && caracterControl == nifM[nifM.length - 1]) return 1;
-  else if (!isNaN(nif[0]) && caracterControl != nifM[nifM.length - 1] && caracterControl != "") return 2;
-  else if ((nif[0] == "Y" || nif[0] == "Z") && caracterControl != nifM[nifM.length - 1] && caracterControl != "") return 2;
-  else if (nif.length >= 6 && nif.length <= 8 && !isNaN(nif[0]) && parseInt(nifM.substr(0,nifM.length - 1)) > 100000) return 3;
-  else return 0;
+  if (!isNaN(nif[0]) && caracterControl == nifM[nifM.length - 1]) codigo = 1;
+  else if ((nif[0] == "Y" || nif[0] == "Z") && caracterControl == nifM[nifM.length - 1]) codigo = 1;
+  else if (!isNaN(nif[0]) && caracterControl != nifM[nifM.length - 1] && caracterControl != "") codigo = 2;
+  else if ((nif[0] == "Y" || nif[0] == "Z") && caracterControl != nifM[nifM.length - 1] && caracterControl != "") codigo = 2;
+  else if (nif.length >= 6 && nif.length <= 8 && !isNaN(nif[0]) && parseInt(nifM.substr(0,nifM.length - 1)) > 100000) codigo = 3;
+  else codigo = 0;
+
+  return codigo;
 }
 
   function esCif(cif) {
     let cifM = cif.toLowerCase();
     let num = cifM.substr(1,7);//Sacamos las 7 posiciones que deberian ocupar los digitos y comprobaremos que sean números con la funcion isNaN(num) que nos deberia devolver un false
     let caracterControl = "jabcdefghi";
+    let codigo;
 
-    if ((cifM[0] >= "a" && cifM[0] <= "v") && !isNaN(cifM[cifM.length - 1]) && cifM[cifM.length - 1] == PosicionCaracter(num) && !isNaN(num) && num.length == 7) return 1;
-    else if (((cifM[0] >= "p" && cifM[0] <= "s") || cifM[0] == "w") && cifM[cifM.length - 1] == caracterControl[PosicionCaracter(num)] && !isNaN(num) && num.length == 7) return 1;
-    else if ((cifM[0] >= "a" && cifM[0] <= "v") && !isNaN(cifM[cifM.length - 1]) && cifM[cifM.length - 1] != PosicionCaracter(num) && !isNaN(num) && num.length == 7) return 2;
-    else if (((cifM[0] >= "p" && cifM[0] <= "s") || cifM[0] == "w") && cifM[cifM.length - 1] != caracterControl[PosicionCaracter(num)] && !isNaN(num) && num.length == 7) return 2;
-    else return 0;
+    if ((cifM[0] >= "a" && cifM[0] <= "v") && !isNaN(cifM[cifM.length - 1]) && cifM[cifM.length - 1] == PosicionCaracter(num) && !isNaN(num) && num.length == 7) codigo =  1;
+    else if (((cifM[0] >= "p" && cifM[0] <= "s") || cifM[0] == "w") && cifM[cifM.length - 1] == caracterControl[PosicionCaracter(num)] && !isNaN(num) && num.length == 7) codigo = 1;
+    else if ((cifM[0] >= "a" && cifM[0] <= "v") && !isNaN(cifM[cifM.length - 1]) && cifM[cifM.length - 1] != PosicionCaracter(num) && !isNaN(num) && num.length == 7) codigo = 2;
+    else if (((cifM[0] >= "p" && cifM[0] <= "s") || cifM[0] == "w") && cifM[cifM.length - 1] != caracterControl[PosicionCaracter(num)] && !isNaN(num) && num.length == 7) codigo = 2;
+    else codigo = 0;
+
+    return codigo;
 
 //----------------CALCULAMOS LA POSICION DEL CARACTER DE CONTROL---------------------------------------------------------------------------
     function PosicionCaracter(num) {
@@ -105,18 +115,22 @@ function calculoIBANEspanya(cCuenta) {
   let iban = cCuenta.replace(/ /g, "")+"142800";
   iban = iban.trim();
   let codigocontrol = 0;
+  let ibanEs = "";
 
-  codigocontrol = parseInt(parseInt(iban)%97);
+  codigocontrol = parseInt(iban,10)%97;
   codigocontrol = (98 - codigocontrol)+'';
 
-  if (codigocontrol < 10) return "ES 0"+codigocontrol+" "+cCuenta;//Devolvemos el IBAN
-  else return "ES "+codigocontrol+" "+cCuenta;//Devolvemos el IBAN
+  if (codigocontrol < 10) ibanEs = "ES0"+codigocontrol+" "+cCuenta;//Devolvemos el IBAN
+  else ibanEs = "ES "+codigocontrol+" "+cCuenta;//Devolvemos el IBAN
+
+  return ibanEs;
 }
 
 function comprobarIBAN(iban) {
     let cuatroCaracteres = iban.substr(0,4);//Guardamos los 4 primeros caracteres
     let ibanAux = iban.substr(4,(iban.length - 4));//Quitamos los 4 primeros caracteres de la cadena
     let letras = "abcdefghijklmnopqrstuvwxz";
+    let control;
 
     ibanAux += cuatroCaracteres;
 
@@ -129,9 +143,11 @@ function comprobarIBAN(iban) {
     let resto = "";
     while (inicial < ibanAux.length) {//Vamos a ir sacando números del ibanAux de 9 en 9 para poder operar con ellos
       resto += ibanAux.substring(inicial,final);
-      resto = parseInt(resto)%97;
+      resto = parseInt(resto,10)%97;
       inicial += 7;final += 7;
     }
-    if (resto == 1)return true;
-    else return false;
+    if (resto == 1)control = true;
+    else control = false;
+
+    return control;
 }//finfuncion

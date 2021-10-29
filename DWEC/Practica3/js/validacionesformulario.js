@@ -1,3 +1,11 @@
+window.onload = inicio;
+
+function inicio() {
+  document.formulario.cp.onblur = verProvincia;
+  document.formulario.cbanco.onblur = ponerCodigo;
+  document.formulario.csucursal.onblur = ponerCodigo;
+  document.formulario.ncuenta.onblur = ponerCodigo;
+}
 var mensaje = "";
 function validarFormulario() {
   validarNombre();
@@ -7,7 +15,7 @@ function validarFormulario() {
   validarLocalidad();
   validarCodigoPostal();
   validarTelefono();
-  //La fecha la validamos usando el tipo date dentro del input
+  validarFecha();
   comprobarBotones();
   comprobarComunidades();
   comprobarBanco();
@@ -19,27 +27,15 @@ function validarFormulario() {
 }
 
 function validarNombre() {
-  let nombre = document.formulario.nombre.value.toLowerCase();
-  let cespeciales = "ªº-.";
-  let control = 0;
-  //Validamos el centro
-  for (let i = 1; i < nombre.length - 1; i++) {
-    if ((nombre[i] < "a" || nombre[i] > "z")&&(nombre[i] < 0 || nombre[i] > 9)&&!cespeciales.inlcudes(nombre[i])) control = 1;
-  }
-
-  if (nombre == "" ||(nombre[0] < "a" || nombre[0] > "z")||control==1||
-     ((nombre[nombre.length - 1] < "a" || nombre[nombre.length - 1] > "z")
-     &&(nombre[nombre.length - 1] < 0 || nombre[nombre.length - 1] > 9)&&nombre[nombre.length - 1] != ".")){mensaje += "Formato de nombre incorrecto \n";}
+  let nombre = document.formulario.nombre.value;
+  let expRegNom =/^[a-záéíóúüñ]([a-záéíóúüñ0-9ªº-]|.)+[a-záéíóúüñ0-9.]$/i;
+  if (!expRegNom.test(nombre)){mensaje += "Formato de nombre incorrecto \n";}
 }
 
 function validarCodigoEmpresa() {
   let codigo = document.formulario.cempresa.value;
-  let control = 0;
-  //Validamos el codigo
-  for (let i = 1; i < codigo.length; i++) {
-    if ((codigo[i] < "a" || codigo[i] > "z")&&(codigo[i] < 0 || codigo[i] > 9)) control = 1;
-  }
-  if (codigo.length < 5 || codigo.length > 10 || control == 1) {mensaje += "Formato de codigo de empresa incorrecto \n";}
+  let expRegCod =new RegExp("^[a-záéíóúüñ0-9]{5,10}$",'i');
+  if (!expRegCod.test(codigo)) {mensaje += "Formato de codigo de empresa incorrecto \n";}
 }
 
 function comprobarNif() {
@@ -52,42 +48,209 @@ function comprobarNif() {
 }
 
 function validarDireccion() {
-  let direccion = document.formulario.direccion.value.toLowerCase();
-  let cespeciales = "ªº-./";
-  let control = 0;
-  //Validamos el centro
-  for (let i = 1; i < direccion.length - 1; i++) {
-    if ((direccion[i] < "a" || direccion[i] > "z")&&(direccion[i] < 0 || direccion[i] > 9)&&!cespeciales.inlcudes(direccion[i])) control = 1;
-  }
-
-  if ((direccion[0] < "a" || direccion[0] > "z")||control==1||
-     ((direccion[direccion.length - 1] < "a" || direccion[direccion.length - 1] > "z")
-     &&(direccion[direccion.length - 1] < 0 || direccion[direccion.length - 1] > 9))){mensaje += "Formato de dirección incorrecto \n";}
+  let direccion = document.formulario.direccion.value;
+  let expRegDir =/^[a-záéíóúüñ]([a-záéíóúüñ0-9ªº-]|[\.\/])+[a-záéíóúüñ0-9.]$/i;
+  if (!expRegDir.test(direccion)){mensaje += "Formato de dirección incorrecto \n";}
 }
 
 function validarLocalidad() {
-  let localidad = document.formulario.localidad.value.replace(/ /g, "").toLowerCase();
-  let control = 0;
-  //Validamos el centro
-  for (let i = 1; i < localidad.length - 1; i++) {
-    if ((localidad[i] < "a" || localidad[i] > "z")) control = 1;
-  }
-
-  if ((localidad[0] < "a" || localidad[0] > "z") || (localidad[localidad.length - 1] < "a" || localidad[localidad.length - 1] > "z") || control == 1){mensaje += "Formato de localidad incorrecto \n";}
+  let localidad = document.formulario.localidad.value;
+  let expRegloc =new RegExp("^[a-záéíóúüñ][a-záéíóúüñ ]+[a-záéíóúüñ]$",'i');
+  if (!expRegloc.test(localidad)) {mensaje += "Formato de localidad incorrecto \n";}
 }
 
 function validarCodigoPostal() {
   let cp = document.formulario.cp.value.trim();
+  let expRegCodp = /^((0?\d)|([1234]\d)|(5[12]))\d{3}$/i;
+  if (!expRegCodp.test(cp)) mensaje += "Formato de codigo postal incorrecto \n";
+}
 
-  if (cp < 1000 || cp > 52999)mensaje += "Formato de codigo postal incorrecto \n";
+function verProvincia() {
+  let cp = document.formulario.cp.value.trim();
+  let expRegCodp = /^((0?\d)|([1234]\d)|(5[12]))\d{3}$/i;
+
+  if (expRegCodp.test(cp)) {añadirProvincias(cp);}
+  else document.formulario.provincia.value = " ";
+}
+
+function añadirProvincias(cp) {
+  let provincia = parseInt(cp.substr(0,2));
+  switch (provincia) {
+    case 1:
+    document.formulario.provincia.value="Araba/Álava";
+    break;
+    case 2:
+    document.formulario.provincia.value="Albacete";
+    break;
+    case 3:
+    document.formulario.provincia.value="Alicante/Alacant";
+    break;
+    case 4:
+    document.formulario.provincia.value="Almería";
+    break;
+    case 5:
+    document.formulario.provincia.value="Ávila";
+    break;
+    case 6:
+    document.formulario.provincia.value="Badajoz";
+    break;
+    case 7:
+    document.formulario.provincia.value="Baleares";
+    break;
+    case 8:
+    document.formulario.provincia.value="Barcelona";
+    break;
+    case 9:
+    document.formulario.provincia.value="Burgos";
+    break;
+    case 10:
+    document.formulario.provincia.value="Cáceres";
+    break;
+    case 11:
+    document.formulario.provincia.value="Cádiz";
+    break;
+    case 12:
+    document.formulario.provincia.value="Castellón";
+    break;
+    case 13:
+    document.formulario.provincia.value="Ciudad Real";
+    break;
+    case 14:
+    document.formulario.provincia.value="Córdoba";
+    break;
+    case 15:
+    document.formulario.provincia.value="A Coruña";
+    break;
+    case 16:
+    document.formulario.provincia.value="Cuenca";
+    break;
+    case 17:
+    document.formulario.provincia.value="Gerona";
+    break;
+    case 18:
+    document.formulario.provincia.value="Granada";
+    break;
+    case 19:
+    document.formulario.provincia.value="Guadalajara";
+    break;
+    case 20:
+    document.formulario.provincia.value="Guipuzkoa";
+    break;
+    case 21:
+    document.formulario.provincia.value="Huelva";
+    break;
+    case 22:
+    document.formulario.provincia.value="Huesca";
+    break;
+    case 23:
+    document.formulario.provincia.value="Jaén";
+    break;
+    case 24:
+    document.formulario.provincia.value="León";
+    break;
+    case 25:
+    document.formulario.provincia.value="Lérida";
+    break;
+    case 26:
+    document.formulario.provincia.value="La Rioja";
+    break;
+    case 27:
+    document.formulario.provincia.value="Lugo";
+    break;
+    case 28:
+    document.formulario.provincia.value="Madrid";
+    break;
+    case 29:
+    document.formulario.provincia.value="Málaga";
+    break;
+    case 30:
+    document.formulario.provincia.value="Murcia";
+    break;
+    case 31:
+    document.formulario.provincia.value="Navarra";
+    break;
+    case 32:
+    document.formulario.provincia.value="Orense";
+    break;
+    case 33:
+    document.formulario.provincia.value="Asturias";
+    break;
+    case 34:
+    document.formulario.provincia.value="Palencia";
+    break;
+    case 35:
+    document.formulario.provincia.value="Las Palmas";
+    break;
+    case 36:
+    document.formulario.provincia.value="Pontevedra";
+    break;
+    case 37:
+    document.formulario.provincia.value="Salamanca";
+    break;
+    case 38:
+    document.formulario.provincia.value="Santa Cruz de Tenerife";
+    break;
+    case 39:
+    document.formulario.provincia.value="Cantabria";
+    case 40:
+    document.formulario.provincia.value="Segovia";
+    break;
+    case 41:
+    document.formulario.provincia.value="Sevilla";
+    break;
+    case 42:
+    document.formulario.provincia.value="Soria";
+    break;
+    case 43:
+    document.formulario.provincia.value="Tarragona";
+    break;
+    case 44:
+    document.formulario.provincia.value="Teruel";
+    break;
+    case 45:
+    document.formulario.provincia.value="Toledo";
+    break;
+    case 46:
+    document.formulario.provincia.value="Valencia";
+    break;
+    case 47:
+    document.formulario.provincia.value="Valladolid";
+    break;
+    case 48:
+    document.formulario.provincia.value="Vizcaya";
+    break;
+    case 49:
+    document.formulario.provincia.value="Zamora";
+    break;
+    case 50:
+    document.formulario.provincia.value="Zaragoza";
+    break;
+    case 51:
+    document.formulario.provincia.value="Ceuta";
+    break;
+    case 52:
+    document.formulario.provincia.value="Melilla";
+    break;
+  }//Del switch
 }
 
 function validarTelefono() {
   let telefono = document.formulario.telefono.value.trim();
-
-  if (telefono.length != 9 || (telefono[0] != 6 && telefono[0] != 9 && telefono[0] != 7)) mensaje += "Formato de telefono incorrecto \n";
+  let expRegTelefono =  new RegExp("^[967]\\d{8}$","g");
+  if (!expRegTelefono.test(telefono)) mensaje += "Formato de telefono incorrecto \n";
 }
 
+/*function validarFax() {
+  let fax = document.formulario.telefono.value.trim();
+  let expRegFax = new RegExp("^9\d{9}");
+  if (!expRegFax.test(fax)) mensaje += "Formato de fax incorrecto \n";
+}*/
+
+function validarFecha() {
+  let fecha = document.formulario.fempresa.value;
+  let expRegFecha = /^\d{1,2}[\/\-]\d{1,2}[\/\-]((\d{2})|(\d{4}))$/;
+  if (!expRegFecha.test(fecha)) mensaje += "Formato de fecha incorrecto \n";
+}
 
 function comprobarBotones() {
   let con = 0;
@@ -123,29 +286,39 @@ function comprobarBanco() {
   let cBanco = document.formulario.cbanco.value,
   cSucursal = document.formulario.csucursal.value,
   nCuenta = document.formulario.ncuenta.value;
+  let expRegcbs = new RegExp("^[0-9]{4}$"),
+  expRegcuenta = new RegExp("^[0-9]{10}$");
+  let comprobar = "";
 
-  comprobar = "";
-
-  if (cBanco.length != 4)comprobar += "Tamaño del codigo del banco incorrecto \n";
-  if (cSucursal.length != 4)comprobar += "Tamaño del codigo de oficina incorrecto \n";
-  if (nCuenta.length != 10)comprobar += "Tamaño del codigo del numero de cuenta incorrecto \n";
+  if (!expRegcbs.test(cBanco))comprobar += "Tamaño del codigo del banco incorrecto \n";
+  if (!expRegcbs.test(cSucursal))comprobar += "Tamaño del codigo de oficina incorrecto \n";
+  if (!expRegcuenta.test(nCuenta))comprobar += "Tamaño del codigo del numero de cuenta incorrecto \n";
 
   if (comprobar != "")mensaje += comprobar;
-  else {
-    document.formulario.ccontrol.onBlur = ponerCodigo();
-
-    function ponerCodigo() {document.formulario.ccontrol.value = codigosControl(cBanco,cSucursal,nCuenta)}
-  }
 }
-function comprobarIban() {
-  let iban = document.formulario.iban.value.toLowerCase().replace(/ /g, "");
-  iban = iban.trim();//Quitamos los blancos del principio y el final de la cadena
-  let control = 0;
-  //Validamos el resto del iban
-  for (let i = 2; i < iban.length; i++) {
-    if (isNaN(iban[i])) control = 1;
-  }
 
-  if (iban[0] < "a" || iban[0] > "z"||iban[1] < "a" || iban[1] > "z" || control == 1 || iban.length > 34 || iban.length < 15) mensaje += "Formato del iban incorrecto \n";
-  else if (comprobarIBAN(iban) == false) mensaje += "Iban incorrecto \n";
+function ponerCodigo() {
+  let cBanco = document.formulario.cbanco.value,
+  cSucursal = document.formulario.csucursal.value,
+  nCuenta = document.formulario.ncuenta.value;
+  let expRegcbs = new RegExp("^[0-9]{4}$"),
+  expRegcuenta = new RegExp("^[0-9]{10}$");
+  let comprobar = "";
+
+  if (!expRegcbs.test(cBanco))comprobar += "0";
+  if (!expRegcbs.test(cSucursal))comprobar += "0";
+  if (!expRegcuenta.test(nCuenta))comprobar += "0";
+
+  if (comprobar == "") document.formulario.ccontrol.value = codigosControl(cBanco,cSucursal,nCuenta);
+  else document.formulario.ccontrol.value = " ";
+}
+
+function comprobarIban() {
+  let iban = document.formulario.iban.value.toLowerCase();
+  iban = iban.trim();//Quitamos los blancos del principio y el final de la cadena
+  let expRegIban = /^[a-z]{2}[0-9]{22}$/i;
+  if (!expRegIban.test(iban)) mensaje += "Formato de Iban incorrecto \n";
+  else {
+    if (!comprobarIBAN(iban)) mensaje += "Iban incorrecto \n";
+  }
 }

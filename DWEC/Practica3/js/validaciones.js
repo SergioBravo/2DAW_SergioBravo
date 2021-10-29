@@ -135,7 +135,7 @@ function comprobarIBAN(iban) {
     ibanAux += cuatroCaracteres;
 
     for (let i = 0; i < ibanAux.length; i++) {//Cambiamos las letras por su correspondiente valor
-      if (letras.indexOf(ibanAux[i]) != -1) ibanAux = ibanAux.replaceAll(ibanAux[i],10+letras.indexOf(ibanAux[i]));
+      if (letras.indexOf(ibanAux[i]) != -1) {ibanAux = ibanAux.replaceAll(ibanAux[i],10+letras.indexOf(ibanAux[i]));}
     }
 
     let inicial = 0;//Para controlar la posicion inical
@@ -146,6 +146,7 @@ function comprobarIBAN(iban) {
       resto = parseInt(resto,10)%97;
       inicial += 7;final += 7;
     }
+
     if (resto == 1)control = true;
     else control = false;
 

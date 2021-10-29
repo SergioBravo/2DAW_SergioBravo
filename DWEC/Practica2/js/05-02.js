@@ -459,7 +459,7 @@ function validarFormulario() {//Validamos el formulario segun las especificacion
     //Comprobamos la validez del nif
     if (caracterControl == nifM[nifM.length - 1]) return 1;
     else if (caracterControl != nifM[nifM.length - 1] && caracterControl != "") return 2;
-    else if (nifM.length >= 6 && nifM <= 8 && !isNaN(nifM[0]) && parseInt(nifM.substr(0,nifM.length - 1)) > 100000) return 3;
+    else if (nifM.length >= 6 && nifM.length <= 8 && !isNaN(nifM[0]) && parseInt(nifM.substr(0,nifM.length - 1)) > 100000) return 3;
     else return 0;
   }
 }

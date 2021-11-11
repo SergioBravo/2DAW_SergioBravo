@@ -1,0 +1,65 @@
+ul {
+  list-style-image: url("../imagenes/mini-acueducto.jpg");
+  list-style-position: outside;
+}
+
+div#primero {
+  display: flex;
+  width: 900px;
+  height: 1050px;
+  align-items: flex-end;
+  flex-direction: column-reverse;
+}
+
+div#primero > div {
+  width: 800px;
+  height: 300px;
+  align-items: center;
+}
+
+div#segundo {
+  display: flex;
+  width: 900px;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+div#segundo > div {
+    width: 300px;
+}
+
+div#tercero {
+  display: flex;
+  width: 900px;
+  height: 800px;
+  align-items: center;
+}
+
+div#tercero > div {
+    width: 900px;
+    height: 350px;
+}
+
+div#cuarto {
+  display: flex;
+  width: 800px;
+  justify-content: space-around;
+}
+
+div#cuarto>div {
+  width: 300px;
+}
+
+div#cuarto>div:first-child { order:3;}
+div#cuarto>div:nth-child(2) { order:1;}
+div#cuarto>div:last-child { order:2;}
+
+ol:first-of-type {
+  list-style-type: lower-greek;
+  list-style-position: inside;
+}
+
+ol:last-of-type {
+  list-style-type: decimal-leading-zero;
+  list-style-position: outside;
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<title>Validaciones</title>
+		<meta charset="utf-8" />
+		<meta name="author" content="Sergio Bravo" />
+		<script src="./js/validacionesformulario.js"></script>
+		<script src="./js/validaciones.js"></script>
+		<link rel="stylesheet" href="./css/index.css">
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Formulario de reocogida de datos de la empresa</h1>
+		</header>
+		<nav>
+
+		</nav>
+		<main>
+			<section>
+				<article>
+					<form name="formulario">
+						<div>
+								<p>Razón social/Apellidos y Nombre <input type="text" name="nombre"></p>
+								<p>Código de empresa	<input type="text" name="cempresa"></p>
+								<p>CIF/NIF de la empresa <input type="text" name="nif"></p>
+						</div>
+
+						<fieldset class="personas">
+							<legend>Tipo de persona</legend>
+							<input type="radio" name="radio" value="Juridica">Juridica
+							<input type="radio" name="radio" value="Fisica">Física
+						</fieldset>
+
+						<fieldset class="domicilio">
+							<legend>Domicilio social Particular</legend>
+							Dirección	<input type="text" name="direccion">
+							Télefono <input type="text" name="telefono">
+							<br><br>
+							Localidad	<input type="text" name="localidad">
+							Código Postal	<input type="text" name="cp">
+							<br><br>
+							Provincia	<input type="text" name="provincia" readonly value="">
+						</fieldset>
+
+						<fieldset class="datosBanco">
+							<legend>Datos bancarios</legend>
+							<p>Código del banco: <input type="text" name="cbanco"></p>
+							<p>Código oficina: <input type="text" name="csucursal"></p>
+							<p>Código control: <input type="text" name="ccontrol" readonly></p>
+							<p>Número de cuenta: <input type="text" name="ncuenta"></p>
+							<p>Iban: <input type="text" name="iban" size="25"></p>
+						</fieldset>
+
+						<div class="empresa">
+							<p>Fecha de constitución de la empresa <input type="text" name="fempresa"></p>
+							<p>Número de trabajadores de la empresa <input type="text" name="ntrabajadores"></p>
+							<p>Número de fabricas de la empresa <input type="text" name="nfabricas"></p>
+							<p>Comunidades en las que hay fabricas <select name="lista" multiple size="5">
+								<option value="asturias">Asturias</option>
+								<option value="andalucia">Andalucia</option>
+								<option value="galicia">Galicia</option>
+								<option value="cantabria">Cantabria</option>
+								<option value="paisvasco">Pais Vasco</option>
+							</select></p>
+						</div>
+
+						<fieldset>
+							<legend>Sector/es Economícos</legend>
+							<input type="checkbox" name="alimentacion">Alimentacion
+							<input type="checkbox" name="informatica">Informática
+							<input type="checkbox" name="comercio">Comercio
+							<input type="checkbox" name="construccion">Construcción
+							<input type="checkbox" name="hosteleria">Hostelería
+							<input type="checkbox" name="alimentacion">Alimentacion
+							<input type="checkbox" name="alimentacion">Alimentacion
+							<input type="checkbox" name="automocion">Automoción
+							<input type="checkbox" name="calzado">Calzado
+							<input type="checkbox" name="turismo">Turismo
+							<input type="checkbox" name="agricultura">Agricultura
+							<input type="checkbox" name="ganaderia">Ganaderia
+							<input type="checkbox" name="otros">Otros
+						</fieldset>
+
+						<fieldset class="tipoEmpresa">
+							<legend>Tipo de empresa</legend>
+							<input type="radio" name="tipoe">S.A
+							<input type="radio" name="tipoe">S.L
+							<input type="radio" name="tipoe">S.A.L
+							<input type="radio" name="tipoe">Cooperativa
+							<input type="radio" name="tipoe">Autónomo
+							<input type="radio" name="tipoe">Otra
+						</fieldset>
+						<br><br>
+						<div class="botones">
+							<input type="button" name="validar" value="Validar" onclick="validarFormulario();">
+							<input type="reset" name="limpiar" value="Limpiar">
+						</div>
+					</form>
+				</article>
+			</section>
+		</main>
+		<footer>
+
+		</footer>
+		<aside>
+		</aside>
+	</body>
+</html>

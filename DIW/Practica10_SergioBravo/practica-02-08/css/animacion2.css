@@ -1,0 +1,98 @@
+input#nombre {
+  animation-name: esquinas;
+  animation-duration: 13s;
+  animation-iteration-count: 10;
+  animation-direction: normal;
+  position: absolute;
+  left: 45%;
+  top: 50%;
+  background-color: red;
+  color: blue;
+  font-family: Arial;
+  font-size: 10pt;
+  width: 50px;
+  height: 50px;
+}
+
+@keyframes esquinas {
+  12.5% {/*Superior izquierda*/
+    left: 0%;
+    top: 0%;
+    background-color: orange;
+    color: green;
+    font-family: Verdana;
+    font-size: 24pt;
+    width: 180px;
+    height: 180px;
+  }
+  25% {/*Centro*/
+    left: 45%;
+    top: 50%;
+    background-color: red;
+    color: blue;
+    font-family: Arial;
+    font-size: 10pt;
+    width: 50px;
+    height: 50px;
+  }
+  37.5% {/*Superior derecha*/
+    left: 92%;
+    top: 0%;
+    background-color: violet;
+    color: yellow;
+    font-family: " Times New Roman";
+    font-size: 18pt;
+    width: 150px;
+    height: 150px;
+  }
+  50%{/*Centro*/
+    left: 45%;
+    top: 50%;
+    background-color: red;
+    color: blue;
+    font-family: Arial;
+    font-size: 10pt;
+    width: 50px;
+    height: 50px;
+  }
+  62.5% {/*Inferior derecha*/
+    left: 90%;
+    top: 80%;
+    background-color: orange;
+    color: green;
+    font-family: Verdana;
+    font-size: 24pt;
+    width: 180px;
+    height: 180px;
+  }
+  75% {/*Centro*/
+    left: 45%;
+    top: 50%;
+    background-color: red;
+    color: blue;
+    font-family: Arial;
+    font-size: 10pt;
+    width: 50px;
+    height: 50px;
+  }
+  87.5% {/*Inferior izquierda*/
+    left: 0%;
+    top: 80%;
+    background-color: orange;
+    color: green;
+    font-family: Verdana;
+    font-size: 24pt;
+    width: 180px;
+    height: 180px;
+  }
+  100% {/*Centro*/
+    left: 45%;
+    top: 50%;
+    background-color: red;
+    color: blue;
+    font-family: Arial;
+    font-size: 10pt;
+    width: 50px;
+    height: 50px;
+  }
+}

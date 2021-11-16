@@ -1,0 +1,19 @@
+img {
+  animation-name: desplazar;
+  animation-duration: 20s;
+  animation-iteration-count: 20;
+  animation-direction: alternate;
+}
+
+@keyframes desplazar {
+  from {
+    margin-left: 0%;
+  }
+  50% {
+    margin-top: 25%;
+    margin-left: 50%;
+  }
+  to{
+    margin-left: 100%;
+  }
+}

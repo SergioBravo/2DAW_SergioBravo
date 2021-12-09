@@ -1,0 +1,65 @@
+img[src*="catedral-leon"] {
+  width: 400px;
+  height: 400px;
+  transition: width 5s linear 0s, height 5s linear 0s;
+}
+img[src*="catedral-leon"]:hover {
+  height: 100px;
+  width: 100px;
+}
+
+img[src*="san-isidoro"] {
+  width: 150px;
+  transition: width 8s linear 0s;
+}
+img[src*="san-isidoro"]:hover {
+  width: 700px;
+}
+
+img[src*="san-marcos"] {
+  width: 800px;
+  transition: width 10s linear 0s;
+}
+img[src*="san-marcos"]:hover {
+  width: 50px;
+}
+
+#uno {
+  color: blue;
+  font-size: 10pt;
+  transition: color 5s linear 0s, font-size 5s linear 0s;
+}
+#uno:hover {
+  color: green;
+  font-size: 14pt;
+}
+
+#dos {
+  color: red;
+  font-size: 15pt;
+  transition: color 5s linear 0s, font-size 5s linear 0s;
+}
+#dos:hover {
+  color: violet;
+  font-size: 11pt;
+}
+
+.uno {
+  color: green;
+  font-size: 12pt;
+  transition: color 5s linear 0s, font-size 5s linear 0s;
+}
+.uno:hover {
+  color: brown;
+  font-size: 16pt;
+}
+
+.dos {
+  color: yellow;
+  font-size: 13pt;
+  transition: color 5s linear 0s, font-size 5s linear 0s;
+}
+.dos:hover {
+  color: orange;
+  font-size: 8pt;
+}

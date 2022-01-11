@@ -1,0 +1,22 @@
+div.partes {
+ background-image: url("../imagenes/sprite.png" );
+ background-repeat:no-repeat;
+ width: 79px;
+ height: 139px;
+}
+
+.uno {
+  background-position: -260px -8px;
+}
+.dos {
+  background-position: -528px -159px;
+}
+.tres {
+  background-position: -0px -308px;
+}
+.cuatro {
+  background-position: -183px -462px;
+}
+.cinco {
+  background-position: -435px -601px;
+}

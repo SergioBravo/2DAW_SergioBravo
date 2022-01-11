@@ -1,0 +1,16 @@
+div.mono {
+ background-image: url("../imagenes/mono.jpg" );
+ background-repeat:no-repeat;
+ width: 109px;
+ height: 116px;
+}
+
+.primero {
+  background-position: -10px -38px;
+}
+.segundo {
+  background-position: -169px -45px;
+}
+.tercero {
+  background-position: -317px -40px;
+}

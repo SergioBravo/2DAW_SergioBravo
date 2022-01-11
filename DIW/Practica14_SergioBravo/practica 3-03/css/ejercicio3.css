@@ -1,0 +1,13 @@
+div.animacion {
+ background-image: url("../imagenes/gato andandoSc.jpg" );
+ background-repeat:no-repeat;
+ width: 389px;
+ height: 355px;
+ animation: moverse 1s steps(8) infinite;
+ border: 1px solid black;
+}
+
+@keyframes moverse {
+  from { background-position: 0 0; }
+  to { background-position: -3419px 0; }
+}

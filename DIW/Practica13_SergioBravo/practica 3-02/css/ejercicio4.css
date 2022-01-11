@@ -1,0 +1,26 @@
+div.animacion {
+  background-image: url("../imagenes/zombie.jpg");
+  width: 72px;
+  height: 107px;
+  background-repeat: no-repeat;
+  animation: moverse 1s steps(5) infinite;
+  border: 1px solid black;
+  }
+
+  div.partes{
+    background-image: url("../imagenes/zombie.jpg");
+    width: 72px;
+    height: 107px;
+    background-repeat:no-repeat;
+  }
+
+  div.uno {background-position: -16px -15px;}
+  div.dos {background-position: -92px -25px;}
+  div.tres {background-position: -165px -26px;}
+  div.cuatro {background-position: -254px -21px;}
+  div.cinco {background-position: -332px -22px;}
+
+  @keyframes moverse {
+    from { background-position: 0 0; }
+    to { background-position: -419px 0; }
+  }

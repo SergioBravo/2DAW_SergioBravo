@@ -1,0 +1,12 @@
+div {
+  background-image: url("../imagenes/andando.png");
+  width: 88px;
+  height: 150px;
+  background-repeat: no-repeat;
+  animation: moverse 1s steps(7) infinite;
+  border: 1px solid black;
+  }
+  @keyframes moverse {
+    from { background-position: 0 0; }
+    to { background-position: -619px 0; }
+  }

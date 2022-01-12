@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>JQUERY</title>
+		<link rel="stylesheet" href="./css/ejercicio2.css">
+		<script src="http://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="./js/ejercicio2.js"></script>
+	</head>
+	<body>
+		<form id="formulario">
+			</section>
+			<!--DEFINICIONES Y LOCALIDADES-->
+			<section id="primera">
+				<article>
+					<div>
+						<h2>Definiciones</h2>
+						<p>Palabra: <input type="text" id="palabra"></p>
+						<p>Concepto: <input type="text" id="concepto"></p>
+						<p><input type="button" id="adefinicion" value="Añadir definicion"></p>
+						<p><input type="button" id="qdefinicion" value="Quitar definicion"></p>
+					</div>
+				</article>
+
+				<article>
+					<div>
+						<h1>Lista definiciones</h1>
+						<dl id="listaDefiniciones"></dl>
+					</div>
+				</article>
+
+				<article>
+					<div>
+						<h2>Nombre de localidades</h2>
+						<p>Localidad: <input type="text" id="localidad"></p>
+						<p><input type="button" id="añadirLocal" value="Añadir localidad"></p>
+					</div>
+				</article>
+
+				<article>
+					<div>
+						<h1>Lista Localidades</h1>
+						<ul id="listaLocalidades"></ul>
+					</div>
+				</article>
+			</section>
+			<!---COCHES Y COMUNIDADES AUTONOMAS -->
+			<section id="segunda">
+				<article>
+					<div id="coches">
+						<h2>Listado de coches</h2>
+						<p>Marca: <input type="text" id="marca"></p>
+						<p>Modelo: <input type="text" id="modelo"></p>
+						<p>Precio: <input type="text" id="precio"></p>
+						<p><input type="button" id="añadirCoche" value="Añadir coche"></p>
+						<p><input type="button" id="quitarCoche" value="Quitar coche"></p>
+					</div>
+				</article>
+
+				<article>
+					<div>
+						<h1>Tabla Coches</h1>
+						<table id="tablaCoches" border="1">
+							<thead>
+								<tr>
+									<th>Marca</th>
+									<th>Modelo</th>
+									<th>Precio</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+							<tfoot>
+							</tfoot>
+						</table>
+					</div>
+				</article>
+
+				<article>
+					<div id="comunidadesAutonomas">
+						<h2>Comunidades Autonomas</h2>
+						<select id="comunidades">
+							<option value="Andaluci­a">Andalucía</option>
+							<option value="Aragon">Aragón</option>
+							<option value="PrincipadoDeAsturias">Principado de Asturias</option>
+							<option value="IslasBaleares">Islas Baleares</option>
+							<option value="PaisVasco">País Vasco</option>
+							<option value="Canarias">Canarias</option>
+							<option value="Cantabria">Cantabria</option>
+							<option value="CastillaLaMancha">Castilla-La Mancha</option>
+							<option value="CastillayLeon">Castilla y León</option>
+							<option value="Cataluña">Cataluña</option>
+							<option value="Extremadura">Extremadura</option>
+							<option value="Galicia">Galicia</option>
+							<option value="Madrid">Comunidad de Madrid</option>
+							<option value="RegiondeMurcia">Región de Murcia</option>
+							<option value="ComunidadForaldeNavarra">Comunidad Foral de Navarra</option>
+							<option value="LaRioja">La Rioja</option>
+							<option value="ComunidadValenciana">Comunidad Valenciana</option>
+							<option value="Ceuta">Ceuta</option>
+							<option value="Melilla">Melilla</option>
+						</select>
+					</div>
+					<div>
+						<p id="mensajeComunidad"></p>
+					</div>
+				</article>
+
+				<article>
+					<div>
+						Provincia:
+						<select id="provincia">
+
+						</select>
+					</div>
+				</article>
+			</section>
+			<section class="final">
+				<article>
+					<table id="tablaFinal">
+						<tr>
+							<th>Comunidad</th>
+							<th>Ciudad Importante</th>
+						</tr>
+						<tr>
+							<td>Andalucia</td>
+							<td>Sevilla</td>
+						</tr>
+						<tr>
+							<td>Aragón</td>
+							<td>Zaragoza</td>
+						</tr>
+						<tr>
+							<td>Asturias</td>
+							<td>Oviedo</td>
+						</tr>
+						<tr>
+							<td>Baleares</td>
+							<td>Palma de mallorca</td>
+						</tr>
+						<tr>
+							<td>Canarias</td>
+							<td>Las Palmas de Gran Canaria</td>
+						</tr>
+						<tr>
+							<td>Cantabria</td>
+							<td>Santander</td>
+						</tr>
+						<tr>
+							<td>Castilla y León</td>
+							<td>Valladolid</td>
+						</tr>
+						<tr>
+							<td>Castilla la Mancha</td>
+							<td>Toledo</td>
+						</tr>
+						<tr>
+							<td>Cataluña</td>
+							<td>Barcelona</td>
+						</tr>
+						<tr>
+							<td>Ceuta</td>
+							<td>Ceuta</td>
+						</tr>
+						<tr>
+							<td>Extremadura</td>
+							<td>Caceres</td>
+						</tr>
+						<tr>
+							<td>Galicia</td>
+							<td>A Coruña</td>
+						</tr>
+						<tr>
+							<td>Madrid</td>
+							<td>Madrid</td>
+						</tr>
+						<tr>
+							<td>Melilla</td>
+							<td>Melilla</td>
+						</tr>
+						<tr>
+							<td>Murcia</td>
+							<td>Murcia</td>
+						</tr>
+						<tr>
+							<td>Navarra</td>
+							<td>Pamplona</td>
+						</tr>
+						<tr>
+							<td>La Rioja</td>
+							<td>Logroño</td>
+						</tr>
+						<tr>
+							<td>Comunidad Valenciana</td>
+							<td>Valencia</td>
+						</tr>
+						<tr>
+							<td>Pais Vasco</td>
+							<td>Bilbao</td>
+						</tr>
+					</table>
+					<p><input type="button" id="Cambiarcolores" value="Aplicar Colores"></p>
+				</article>
+			</section>
+		</form>
+	</body>
+</html>

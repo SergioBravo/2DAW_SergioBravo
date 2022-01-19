@@ -1,0 +1,16 @@
+body {
+  background-color: blue;
+  color: white;
+}
+
+fieldset.direccion {width: 20%;}
+
+fieldset.trabajo {width: 20%;}
+
+fieldset.aficiones {width: 45%;}
+
+div.mensaje {
+  position: absolute;
+  left: 60%;
+  bottom: 75%;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <title>Repaso primer trimestre</title>
+		<meta charset="utf-8" />
+		<meta name="author" content="Sergio Bravo" />
+		<link href="./css/repaso.css" rel="stylesheet" type="text/css" />
+		<script src="./js/repaso.js"></script>
+  </head>
+  <body>
+    <h1>Datos de Registro de Usuario</h1>
+    <form name="formulario">
+      <p>Apellidos: <input type="text" name="apellido"></p>
+      <p>Nombre: <input type="text" name="nombre"></p>
+
+      <fieldset class="direccion">
+        <legend>Dirección</legend>
+        <p>Tipo de Vía: <input type="text" name="tvia"></p>
+        <p>Nombre de Vía: <input type="text" name="nvia"></p>
+        <p>Número: <input type="text" name="numero"></p>
+        <p>Portal: <input type="text" name="portal"></p>
+        <p>Piso o Planta: <input type="text" name="piso"></p>
+        <p>Puerta: <input type="text" name="puerta"></p>
+        <p>Localidad: <input type="text" name="localidad"></p>
+        <p>Código Postal: <input type="text" name="cp"></p>
+        <p>Provincia: <input type="text" name="provincia"></p>
+        <p>País o Estado: <input type="text" name="pais"></p>
+      </fieldset>
+
+      <fieldset class="trabajo">
+        <legend>Trabajo</legend>
+        <p>Puesto de Trabajo: <input type="text" name="puesto"></p>
+        <p>Nombre de la Empresa: <input type="text" name="empresa"></p>
+        <p>Categoria Profesional: <input type="text" name="categoria"></p>
+      </fieldset>
+
+      <fieldset class="aficiones">
+        <legend>Aficiones</legend>
+        <input type="checkbox" name="musica" value="EscucharMusica">Escuchar Musica
+        <input type="checkbox" name="viajar" value="Viajar">Viajar
+        <input type="checkbox" name="leer" value="Leer">Leer
+        <input type="checkbox" name="deporte" value="HacerDeporte">Hacer Deporte
+        <input type="checkbox" name="fotos" value="HacerFotos">Hacer Fotos
+        <input type="checkbox" name="videos" value="GrabarVideos">Grabar Videos
+        <input type="checkbox" name="cenar" value="SalirACenar">Salir a Cenar
+        <input type="checkbox" name="copas" value="SalirDeCopas">Salir de Copas
+      </fieldset>
+
+      <div class="mensaje">
+        <h2>Mensajes</h2>
+        <textarea name="texto" rows="8" cols="80" ></textarea>
+      </div>
+
+      <p><input type="button" name="enviar" value="Enviar"></p>
+    </form>
+  </body>
+</html>

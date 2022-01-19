@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <title>Ejercicio2</title>
+		<meta charset="utf-8" />
+		<meta name="author" content="Sergio Bravo" />
+		<link href="./css/repasoDOM.css" rel="stylesheet" type="text/css" />
+		<script src="./js/repasoDOM.js"></script>
+  </head>
+  <body>
+    <h1>Datos de Registro de Usuario</h1>
+    <form id="formulario">
+      <p>Apellidos: <input type="text" id="apellido"></p>
+      <p>Nombre: <input type="text" id="nombre"></p>
+
+      <fieldset class="direccion">
+        <legend>Dirección</legend>
+        <p>Tipo de Vía: <input type="text" id="tvia"></p>
+        <p>Nombre de Vía: <input type="text" id="nvia"></p>
+        <p>Número: <input type="text" id="numero"></p>
+        <p>Portal: <input type="text" id="portal"></p>
+        <p>Piso o Planta: <input type="text" id="piso"></p>
+        <p>Puerta: <input type="text" id="puerta"></p>
+        <p>Localidad: <input type="text" id="localidad"></p>
+        <p>Código Postal: <input type="text" id="cp"></p>
+        <p>Provincia: <input type="text" id="provincia"></p>
+        <p>País o Estado: <input type="text" id="pais"></p>
+      </fieldset>
+
+      <fieldset class="trabajo">
+        <legend>Trabajo</legend>
+        <p>Puesto de Trabajo: <input type="text" id="puesto"></p>
+        <p>Nombre de la Empresa: <input type="text" id="empresa"></p>
+        <p>Categoria Profesional: <input type="text" id="categoria"></p>
+      </fieldset>
+
+      <fieldset class="aficiones">
+        <legend>Aficiones</legend>
+        <input type="checkbox" id="musica" value="EscucharMusica">Escuchar Musica
+        <input type="checkbox" id="viajar" value="Viajar">Viajar
+        <input type="checkbox" id="leer" value="Leer">Leer
+        <input type="checkbox" id="deporte" value="HacerDeporte">Hacer Deporte
+        <input type="checkbox" id="fotos" value="HacerFotos">Hacer Fotos
+        <input type="checkbox" id="videos" value="GrabarVideos">Grabar Videos
+        <input type="checkbox" id="cenar" value="SalirACenar">Salir a Cenar
+        <input type="checkbox" id="copas" value="SalirDeCopas">Salir de Copas
+      </fieldset>
+
+      <div class="mensaje">
+        <h2>Mensajes</h2>
+        <textarea id="texto" rows="8" cols="80" ></textarea>
+      </div>
+
+      <p><input type="button" id="enviar" value="Enviar"></p>
+    </form>
+  </body>
+</html>

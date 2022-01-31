@@ -1,0 +1,18 @@
+<personal>
+	<persona>
+		<nombre>"+vnombre+"</nombre>
+		<apellidos>"+vapellidos"</apellidos>
+	</persona>
+	<persona>
+		<nombre>"+vnombre+"</nombre>
+		<apellidos>"+vapellidos"</apellidos>
+	</persona>
+	<persona>
+		<nombre>"+vnombre+"</nombre>
+		<apellidos>"+vapellidos"</apellidos>
+	</persona>
+	<persona>
+		<nombre>"+vnombre+"</nombre>
+		<apellidos>"+vapellidos"</apellidos>
+	</persona>
+</personal>";

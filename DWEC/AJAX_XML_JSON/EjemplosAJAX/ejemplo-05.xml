@@ -1,0 +1,18 @@
+<libreria>
+	<libro>
+		<titulo>El último catón</titulo>
+		<autor>Matilde Asensi</autor>
+		<editorial>planeta</editorial>
+		<paginas>512</paginas>
+		<precio>23.50</precio>
+		<formato>tapas duras</fortmato>
+	</libro>
+	<libro>
+		<titulo>La biblia de barro</titulo>
+		<autor>Julia Navarro</autor>
+		<editorial>seix barral</editorial>
+		<paginas>480</paginas>
+		<precio>21.90</precio>
+		<formato>tapas blandas</fortmato>
+	</libro>
+</libreria>

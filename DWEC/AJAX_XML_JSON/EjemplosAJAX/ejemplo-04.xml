@@ -1,0 +1,12 @@
+<libreria>
+	<libro>
+		<titulo autor='Matilde Asensi' editorial='planeta'
+				paginas='512' precio='23.50' formato='tapas duras'>
+				El último catón</titulo>
+	</libro>
+	<libro>
+		<titulo autor='Julia Navarro' editorial='seix barral'
+				paginas='480' precio='21.90' formato='tapas blandas'>
+				La biblia de barro</titulo>
+	</libro>
+</libreria>

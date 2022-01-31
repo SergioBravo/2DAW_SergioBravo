@@ -1,0 +1,5 @@
+<personal>
+	<persona>
+		<nombre apellidos="+vapellidos+">"+vnombre+"</nombre>
+	</persona>
+</personal>

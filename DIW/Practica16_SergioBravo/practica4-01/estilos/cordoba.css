@@ -1,0 +1,38 @@
+body {
+	background-color:#982932;
+	background-clip:content-box;
+	font-family:calibri;
+	font-size:14pt;
+	margin-top:2%;
+	margin-left:5%;
+	margin-right:3%;
+	padding: 1%;
+	color:#5ACE0D;
+}
+img {
+	width:30%;
+}
+h1, h2, h3 {
+	color:#FCF401;
+	margin-top: 5%;
+}
+div {
+	text-indent:5%;
+}
+
+#menu {padding: 0;}
+#menu li {display: inline;}
+#menu li a {
+	font-family: Arial;
+	font-size: 18px;
+	text-decoration: none;
+	float: left;
+	padding: 10px;
+	background-color: #2175bc;
+	color: white;
+}
+#menu li a:hover {
+	background-color: #2586d7;
+	margin-top:-2px;
+	padding-bottom:12px;
+}

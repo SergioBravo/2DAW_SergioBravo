@@ -1,0 +1,127 @@
+div#andalucia {
+	background-color:#539033;
+	background-clip:content-box;
+	font-family:calibri;
+	font-size:14pt;
+	margin-top:2%;
+	margin-left:5%;
+	margin-right:3%;
+	padding: 1%;
+	color:#FCF401;
+}
+div#andalucia img {
+	width:20%;
+}
+div#andalucia h1,div#andalucia h2,div#andalucia h3 {
+	color:#982932;
+	margin-top: 5%;
+}
+
+div#cantabria {
+	background-color:#9E1010;
+	background-clip:content-box;
+	font-family:calibri;
+	font-size:14pt;
+	margin-top:2%;
+	margin-left:5%;
+	margin-right:3%;
+	padding: 1%;
+	color:white;
+}
+div#cantabria img {
+	width:20%;
+}
+div#cantabria h1, div#cantabria h2, div#cantabria h3 {
+	color:#07BADA;
+	margin-top: 5%;
+}
+
+div#cordoba {
+	background-color:#982932;
+	background-clip:content-box;
+	font-family:calibri;
+	font-size:14pt;
+	margin-top:2%;
+	margin-left:5%;
+	margin-right:3%;
+	padding: 1%;
+	color:#5ACE0D;
+}
+div#cordoba img {
+	width:30%;
+}
+div#cordoba h1, div#cordoba h2, div#cordoba h3 {
+	color:#FCF401;
+	margin-top: 5%;
+}
+div#cordoba div {
+	text-indent:5%;
+}
+
+div#salamanca {
+	background-color:#982932;
+	background-clip:padding-box;
+	font-family:calibri;
+	font-size:14pt;
+	margin-top:8%;
+	margin-left:15%;
+	margin-right:13%;
+	padding: 3%;
+	color:#5ACE0D;
+}
+div#salamanca img {
+	width:30%;
+}
+div#salamanca h1, div#salamanca h2, div#salamanca h3 {
+	color:#FCF401;
+}
+div#salamanca div {
+	text-indent:15%;
+	line-height:2em;
+}
+
+div#segovia {
+	background-color:#21F2F2;
+	background-clip:content-box;
+	font-family:calibri;
+	font-size:14pt;
+	margin-top:2%;
+	margin-left:5%;
+	margin-right:3%;
+	padding: 1%;
+	color:#323533;
+}
+div#segovia img {
+	width:40%;
+}
+div#segovia h1, div#segovia h2, div#segovia h3 {
+	color:#7A1021;
+	margin-top: 5%;
+}
+div#segovia div {
+	text-indent:5%;
+	line-height:1.5em;
+}
+
+div#sevilla {
+	background-color:#C30A32;
+	background-clip:content-box;
+	font-family:calibri;
+	font-size:14pt;
+	margin-top:2%;
+	margin-left:5%;
+	margin-right:3%;
+	padding: 1%;
+	color:#C39B0A;
+}
+div#sevilla img {
+	width:45%;
+}
+div#sevilla h1, div#sevilla h2, div#sevilla h3 {
+	color:#5A0A5D;
+	margin-top: 5%;
+}
+div#sevilla div {
+	text-indent:10%;
+	line-height:1.8em;
+}
